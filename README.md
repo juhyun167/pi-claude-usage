@@ -16,7 +16,7 @@ The package contains:
 ## Requirements
 
 - [Pi](https://pi.dev), signed in with a **Claude Pro or Max subscription** (OAuth). Pi's built-in Anthropic provider uses API keys; for subscription login, use an OAuth provider package such as [`@gotgenes/pi-anthropic-auth`](https://www.npmjs.com/package/@gotgenes/pi-anthropic-auth). API-key accounts don't have plan limits, so there is nothing to show.
-- `bash`, `curl` and [`jq`](https://jqlang.org/) (`brew install jq` / `apt install jq`)
+- Nothing else: the script is plain Node, which Pi already runs on, so it works the same on Windows, macOS and Linux.
 
 ## Install
 
@@ -49,10 +49,10 @@ The endpoint is rate limited, so responses are cached for 60 seconds. If a reque
 The script also works on its own:
 
 ```sh
-bash skills/claude-usage/scripts/usage.sh                     # plain text
-bash skills/claude-usage/scripts/usage.sh --color             # with colors
-bash skills/claude-usage/scripts/usage.sh --json              # raw response
-bash skills/claude-usage/scripts/usage.sh --input saved.json  # render a saved --json response
+node skills/claude-usage/scripts/usage.mjs                     # plain text
+node skills/claude-usage/scripts/usage.mjs --color             # with colors
+node skills/claude-usage/scripts/usage.mjs --json              # raw response
+node skills/claude-usage/scripts/usage.mjs --input saved.json  # render a saved --json response
 ```
 
 ## Caveat

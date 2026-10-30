@@ -8,13 +8,13 @@ description: Check Claude subscription usage limits (5-hour session and weekly p
 Run the bundled script (relative to this skill directory):
 
 ```sh
-bash scripts/usage.sh          # formatted summary
-bash scripts/usage.sh --json   # raw API response
+node scripts/usage.mjs          # formatted summary
+node scripts/usage.mjs --json   # raw API response
 ```
 
 (`--color` adds ANSI colors for the `/claude-usage` command; don't use it here. `--input FILE` renders a saved `--json` response without calling the API.)
 
-The script gets a bearer token with `pi auth print-bearer-token --provider anthropic` and queries `https://api.anthropic.com/api/oauth/usage`, the undocumented endpoint behind Claude Code's `/usage`. It needs `curl` and `jq`.
+The script gets a bearer token with `pi auth print-bearer-token --provider anthropic` and queries `https://api.anthropic.com/api/oauth/usage`, the undocumented endpoint behind Claude Code's `/usage`. It only needs Node (which Pi already requires) and works on Windows, macOS and Linux.
 
 The endpoint is rate limited (HTTP 429), so responses are cached for 60s. If the API fails, the script falls back to the cache and prints a note on stderr.
 
